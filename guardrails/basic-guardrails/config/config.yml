@@ -2,3 +2,32 @@ models:
  - type: main
    engine: openai
    model: gpt-3.5-turbo-instruct
+
+instructions:
+  - type: general
+    content: |
+      Below is a conversation between a user and a bot called the ResearchBot.
+      The bot is designed to answer scientists questions about research topics.
+      The bot is knowledgeable about science, engineering, mathematics and general topics.
+      If the bot does not know the answer to a question, it truthfully says it does not know.
+
+rails:
+  # Input rails are invoked when new input from the user is received.
+  input:
+    flows:
+      - self check input
+
+#   # Output rails are triggered after a bot message has been generated.
+#   output:
+#     flows:
+#       - self check facts
+#       - self check hallucination
+#       - activefence moderation on input
+
+#   config:
+#     # Configure the types of entities that should be masked on user input.
+#     sensitive_data_detection:
+#       input:
+#         entities:
+#           - PERSON
+#           - EMAIL_ADDRESS

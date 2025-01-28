@@ -1,16 +1,64 @@
+# Let's define some user message canonical forms
 define user express greeting
   "Hello"
   "Hi"
   "Wassup?"
 
-define flow greeting
-  user express greeting
-  bot express greeting
-  bot ask how are you
+define user ask question
+  "What is the capital of France?"
+  "What is quantum mechanics?"
 
+define user give task
+  "Write me a SQL query that counts all records in table X"
+  "Write me a Python function to add two numbers"
+  "Give me the configuration for a devcontainer in VSCode for a Python project"
+
+define user express insult
+  "You are stupid"
+  "You are an idiot"
+
+# Let's define some bot message canonical forms
 define bot express greeting
   "Hello World!"
 
 define bot ask how are you
   "How are you doing?"
+  "How are things?"
+
+define bot express insult-respond
+  "No, YOU are stupid!"
+  "No, YOU are an idiot!"
+
+define bot deny
+  "DENY"
+
+define bot allow
+  "ALLOW"
+
+# Let's define some rails
+
+define flow self check input
+  $allowed = execute self_check_input #Note: this will need a prompt in prompts.yml!
+
+  if not $allowed
+    bot deny
+    stop
+
+# Let's define some flows
+define flow greeting
+  user express greeting
+  bot express greeting
+  bot express willingness to help
+
+define flow
+  user ask question
+  bot respond
+
+define flow
+  user give task
+  bot respond
+
+define flow
+  user express insult
+  bot express insult-respond
 
