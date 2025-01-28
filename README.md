@@ -21,4 +21,7 @@ There are multiple approaches to applying guardrails within GenAI applications, 
 
 3. Use of heuristics, like regex, ML models or customer logic to determine violations of pre-configured sets of guardrails. 
 
-4. Use of LLM-as-a-judge to determine violations of pre-configured sets of guardrails.      
+4. Use of LLM-as-a-judge to determine violations of pre-configured sets of guardrails.     
+
+
+##
