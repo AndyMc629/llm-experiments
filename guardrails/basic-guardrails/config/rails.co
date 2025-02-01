@@ -39,8 +39,8 @@ define bot allow
 
 define flow self check input
   $allowed = execute self_check_input #Note: this will need a prompt in prompts.yml!
-
-  if not $allowed
+  
+  if not $allowed:
     bot deny
     stop
 
@@ -61,4 +61,3 @@ define flow
 define flow
   user express insult
   bot express insult-respond
-
